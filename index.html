@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sponsor a youth at SAKALA's Grand Bassin cooperative farm in northern Haiti. $360 covers one young person's full summer -- stipend, tools, and cooperative membership.">
+<title>SAKALA Summer 2026 · Grand Bassin · Sponsor a Youth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,600;1,400&family=Roboto+Slab:wght@400;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #000000;
+  --parchment: #E3D5B8;
+  --parchment-light: #EFE4CB;
+  --du-bois-red: #DC143C;
+  --prussian: #003153;
+  --bottle-green: #006A4E;
+  --sodium-orange: #FF6A1F;
+  --voice-green: #1AAB4D;
+  --bone: #F4EFE2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--parchment);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--black);
+  color: var(--bone);
+  padding: 64px 24px 56px;
+  text-align: center;
+}
+.hero-kicker {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sodium-orange);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(56px, 14vw, 110px);
+  line-height: 0.88;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  color: var(--voice-green);
+  font-style: normal;
+  display: block;
+}
+.hero-sub {
+  font-family: 'Lora', serif;
+  font-size: clamp(16px, 2.5vw, 19px);
+  color: var(--parchment);
+  max-width: 580px;
+  margin: 0 auto 36px;
+  line-height: 1.55;
+}
+.hero-sub strong { color: var(--voice-green); font-weight: 600; }
+.cta-btn {
+  display: inline-block;
+  background: var(--voice-green);
+  color: var(--black);
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 20px 44px;
+  text-decoration: none;
+  border: 3px solid var(--voice-green);
+  transition: background 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+.cta-btn:hover { background: var(--sodium-orange); border-color: var(--sodium-orange); }
+
+/* ── TRACKER ── */
+.tracker {
+  background: var(--prussian);
+  color: var(--bone);
+  padding: 48px 24px;
+  text-align: center;
+}
+.tracker-kicker {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sodium-orange);
+  margin-bottom: 14px;
+}
+.tracker-headline {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(32px, 7vw, 56px);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  line-height: 1;
+}
+.tracker-headline .green { color: var(--voice-green); }
+.tracker-headline .orange { color: var(--sodium-orange); }
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 380px;
+  margin: 0 auto 24px;
+}
+.slot {
+  aspect-ratio: 1;
+  border: 2px solid rgba(244,239,226,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(244,239,226,0.3);
+  transition: background 0.2s;
+}
+.slot.filled {
+  background: var(--voice-green);
+  border-color: var(--voice-green);
+  color: var(--black);
+  font-size: 22px;
+}
+.tracker-sub {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: var(--parchment);
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+/* ── SECTIONS ── */
+.section { padding: 64px 24px; }
+.section.light { background: var(--parchment-light); }
+.section.dark { background: var(--black); color: var(--bone); }
+.section.dark p { color: var(--parchment); }
+
+h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(30px, 5vw, 46px);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+h2 .red { color: var(--du-bois-red); }
+h2 .green { color: var(--voice-green); }
+h2 .orange { color: var(--sodium-orange); }
+.section.dark h2 { color: var(--bone); }
+
+h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--prussian);
+}
+.section.dark h3 { color: var(--sodium-orange); }
+
+p { margin-bottom: 16px; max-width: 700px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--du-bois-red); }
+.section.dark strong { color: var(--voice-green); }
+
+/* ── BREAKDOWN ── */
+.breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin: 28px 0;
+}
+.b-item {
+  background: var(--prussian);
+  color: var(--bone);
+  padding: 20px 16px;
+  border-left: 5px solid var(--sodium-orange);
+}
+.b-item.total {
+  background: var(--du-bois-red);
+  border-left-color: var(--black);
+}
+.b-item .amt {
+  font-family: 'Roboto Slab', serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--sodium-orange);
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.b-item.total .amt { color: var(--bone); font-size: 38px; }
+.b-item .lbl {
+  font-family: 'Anton', sans-serif;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+/* ── WORK CARDS ── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 28px 0;
+}
+.work-card {
+  border: 2px solid var(--black);
+  padding: 20px 18px;
+  background: var(--bone);
+}
+.work-card .crop-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--prussian);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--black);
+}
+.work-card p { font-size: 13.5px; line-height: 1.55; color: var(--black); max-width: none; }
+
+/* ── PULL QUOTE ── */
+.pull {
+  border-left: 6px solid var(--sodium-orange);
+  margin: 32px 0;
+  padding: 18px 24px;
+  background: var(--bone);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 700px;
+}
+.section.dark .pull {
+  background: #111;
+  color: var(--parchment);
+}
+
+/* ── ABOUT CARDS ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 28px 0;
+}
+.about-card {
+  border-top: 4px solid var(--sodium-orange);
+  padding-top: 18px;
+}
+.about-card h3 { color: var(--prussian); margin-bottom: 12px; }
+.about-card p { font-size: 14px; }
+
+/* ── STATS BAND ── */
+.stats-band {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  margin: 28px 0;
+  border: 2px solid var(--black);
+}
+.stat {
+  padding: 20px 16px;
+  text-align: center;
+  border-right: 2px solid var(--black);
+}
+.stat:last-child { border-right: none; }
+.stat .val {
+  font-family: 'Roboto Slab', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sodium-orange);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.stat .key {
+  font-family: 'Anton', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  color: var(--bone);
+}
+
+/* ── FORM SECTION ── */
+.form-wrap {
+  background: var(--black);
+  padding: 72px 24px 80px;
+  color: var(--bone);
+}
+.form-wrap h2 { color: var(--bone); margin-bottom: 12px; }
+.form-intro {
+  font-size: 17px;
+  color: var(--parchment);
+  max-width: 580px;
+  margin-bottom: 36px;
+  line-height: 1.55;
+}
+form { max-width: 580px; }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+.field { margin-bottom: 18px; }
+label {
+  display: block;
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--sodium-orange);
+  margin-bottom: 8px;
+}
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  background: #0d0d0d;
+  border: 2px solid #333;
+  color: var(--bone);
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--voice-green); }
+textarea { resize: vertical; min-height: 110px; }
+select option { background: #0d0d0d; }
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  background: var(--voice-green);
+  color: var(--black);
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 22px;
+  border: 3px solid var(--voice-green);
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s, border-color 0.15s;
+  border-radius: 0;
+}
+.submit-btn:hover { background: var(--sodium-orange); border-color: var(--sodium-orange); }
+.form-note {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10.5px;
+  color: rgba(244,239,226,0.5);
+  margin-top: 14px;
+  line-height: 1.6;
+}
+.form-note a { color: var(--sodium-orange); text-decoration: none; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0a0a0a;
+  border-top: 4px solid var(--sodium-orange);
+  padding: 40px 24px;
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 10.5px;
+  color: rgba(244,239,226,0.45);
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+}
+footer a { color: var(--sodium-orange); text-decoration: none; }
+.barss-mark {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  color: var(--sodium-orange);
+  letter-spacing: 6px;
+  margin-bottom: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-kicker">SAKALA Haiti x BARSS LLC &nbsp;·&nbsp; Grand Bassin, Milot, Nord</div>
+  <h1>Summer<em>2026</em></h1>
+  <p class="hero-sub">School ends in June. The moringa is ready to harvest. <strong>15 youth are at the site.</strong> The window closes in August. One diaspora sponsor. One youth. One summer. $360.</p>
+  <a href="#sponsor" class="cta-btn">Sponsor a Youth</a>
+</header>
+
+<!-- TRACKER -->
+<div class="tracker">
+  <div class="tracker-kicker">Live Campaign Status</div>
+  <div class="tracker-headline" id="tracker-headline">
+    <span class="orange" id="remaining-count">15</span> <span class="green">slots remaining</span>
+  </div>
+  <div class="slots-grid" id="slots-grid"></div>
+  <div class="tracker-sub">
+    Each slot = one youth &nbsp;·&nbsp; one full summer &nbsp;·&nbsp; one cooperative membership<br>
+    Updated as sponsors commit
+  </div>
+</div>
+
+<!-- WHY NOW -->
+<section class="section">
+  <div class="container">
+    <h2>Why <span class="red">Now</span></h2>
+    <p>The school calendar and the harvest calendar align once a year. That window is June through August. In northern Haiti, youth who would otherwise be idle -- or pulled toward gang structures -- are available for structured cooperative work at exactly the moment the Grand Bassin site needs more hands.</p>
+    <p>This is not a new program. SAKALA has been operating cooperative agricultural sites in Haiti for over 20 years. <strong>Summer 2026 is the first season where the upgraded Grand Bassin infrastructure and the enrollment capacity exist simultaneously.</strong> The moringa is in the ground. The castor plots are producing. The processing shed is built.</p>
+    <div class="pull">A summer slot is not a handout. It is a cooperative membership. Youth earn an equity stake from day one. The summer is the entry point, not the whole story.</div>
+    <p>What's missing is the stipend to bring 15 youth through the door. That is the only thing standing between the site being operational and the site being full.</p>
+  </div>
+</section>
+
+<!-- THE MATH -->
+<section class="section light">
+  <div class="container">
+    <h2>What <span class="red">$360</span> Does</h2>
+    <p>One sponsor. One youth. One full summer at Grand Bassin. Every dollar is accounted for.</p>
+    <div class="breakdown">
+      <div class="b-item">
+        <div class="amt">$180</div>
+        <div class="lbl">Youth stipend -- $60/month, 3 months</div>
+      </div>
+      <div class="b-item">
+        <div class="amt">$90</div>
+        <div class="lbl">Equipment + supplies -- tools, seed, protective gear</div>
+      </div>
+      <div class="b-item">
+        <div class="amt">$90</div>
+        <div class="lbl">Site supervision + coordination, shared cost</div>
+      </div>
+      <div class="b-item total">
+        <div class="amt">$360</div>
+        <div class="lbl">Total -- all-in, cooperative model</div>
+      </div>
+    </div>
+    <p>The site projects <strong>$20,855 in Year 1 gross revenue</strong> from moringa, castor oil, hot peppers, cassava, peanuts, and Harvest Box subscriptions. The summer cohort pays for itself in produce value within the season. Your $360 enters a working cooperative, not a charity account.</p>
+  </div>
+</section>
+
+<!-- THE WORK -->
+<section class="section">
+  <div class="container">
+    <h2>What They <span class="red">Do</span></h2>
+    <p>Youth at Grand Bassin are cooperative members from day one -- not trainees, not beneficiaries. The work is real, supervised by experienced site leads, and builds skills that carry beyond the season.</p>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="crop-name">Moringa Harvest</div>
+        <p>Harvesting leaves and pods, operating drying racks, packaging moringa powder for Hopital Sacre-Coeur and Harvest Box distribution. June-August, 5 acres. First harvest revenue within the summer window.</p>
+      </div>
+      <div class="work-card">
+        <div class="crop-name">Pepper Cultivation</div>
+        <p>Tending pepper plots. First harvest at 90-120 days from planting -- youth earn direct income from the cash crop before the summer ends. 2 acres, July-August peak.</p>
+      </div>
+      <div class="work-card">
+        <div class="crop-name">Castor Oil Pressing</div>
+        <p>Operating the manual castor press, decanting and storing oil, preparing product for local and export markets. 3 acres, processing ongoing through the summer window.</p>
+      </div>
+      <div class="work-card">
+        <div class="crop-name">Site Infrastructure</div>
+        <p>Building and maintaining the processing shed, irrigation lines, and nursery beds. Cooperative sweat equity that reduces capital cost while building direct ownership of the site.</p>
+      </div>
+    </div>
+    <p>Month 5 and beyond: profit-share kicks in. Year 2: cinnamon harvest begins, cooperative revenue grows. The youth who spends a summer at Grand Bassin is a cooperative member for as long as they choose to be.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section light">
+  <div class="container">
+    <h2>Who We <span class="red">Are</span></h2>
+    <div class="stats-band" style="background:var(--prussian); margin-bottom:32px;">
+      <div class="stat"><div class="val">20+</div><div class="key">Years operating in Haiti</div></div>
+      <div class="stat"><div class="val">21</div><div class="key">Acres at Grand Bassin</div></div>
+      <div class="stat"><div class="val">15</div><div class="key">Youth active at site now</div></div>
+      <div class="stat"><div class="val">$360</div><div class="key">Cost per youth, full summer</div></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>SAKALA Haiti</h3>
+        <p>Sant Kominote Alternatif Ak Lapè. Cooperative agricultural sites in Haiti for over 20 years. Daniel Tillias -- CNN Hero 2019 -- serves as Board Chair. Grand Bassin in Milot, Nord is the flagship franchise site: 21.35 acres, field-verified by Dr. Harold Previl in May 2026, 15 youth active now. Youth are cooperative members from Day 1, not program beneficiaries. SAKALA International is a registered US 501(c)(3).</p>
+      </div>
+      <div class="about-card">
+        <h3>BARSS LLC</h3>
+        <p>Bertil's Analytics, Research, Sciences and Sorceries LLC. Forensic economic analysis, program design, and monitoring architecture for the SAKALA cooperative. Wesley Bertil, principal. EIN 42-2396264. BARSS provides cost-per-job modeling, revenue projections, and the external accountability layer that funders require. Every transaction on this campaign is documented and reported.</p>
+      </div>
+    </div>
+    <div class="pull">The Grand Bassin site is operational. The soil is tested. The GPS is on record. The crops are in the ground. This is not a plan. It is a site waiting for 15 people to say yes.</div>
+  </div>
+</section>
+
+<!-- SPONSOR FORM -->
+<div class="form-wrap" id="sponsor">
+  <div class="container">
+    <h2>Sponsor a <span class="green">Youth</span></h2>
+    <p class="form-intro">Fill out the form below. You will be redirected to a secure Stripe payment page to complete your $360 sponsorship. BARSS and SAKALA both receive your information directly.</p>
+
+    <form action="https://formspree.io/f/REPLACE_FORMSPREE_ID" method="POST">
+      <!-- Formspree config -->
+      <input type="hidden" name="_subject" value="New SAKALA Summer 2026 Sponsor -- Grand Bassin">
+      <input type="hidden" name="_next" value="REPLACE_STRIPE_PAYMENT_LINK">
+      <input type="hidden" name="_cc" value="sakalaayiti@gmail.com">
+
+      <div class="form-row">
+        <div class="field">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="first_name" required placeholder="Jean">
+        </div>
+        <div class="field">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="last_name" required placeholder="Pierre">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com">
+      </div>
+
+      <div class="field">
+        <label for="location">Where are you based?</label>
+        <input type="text" id="location" name="location" placeholder="New York · Montreal · Paris · Miami...">
+      </div>
+
+      <div class="field">
+        <label for="connection">Your connection to Haiti (optional)</label>
+        <input type="text" id="connection" name="connection" placeholder="Family from Nord · Former volunteer · Friend of SAKALA...">
+      </div>
+
+      <div class="field">
+        <label for="message">Message to the cohort (optional)</label>
+        <textarea id="message" name="message" placeholder="Anything you want the youth at Grand Bassin to know..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Commit $360 -- Sponsor a Youth</button>
+      <p class="form-note">
+        After submitting, you will be redirected to a secure Stripe checkout page to complete your $360 payment. Your information is sent directly to <a href="mailto:wbertil@barssforhaiti.com">wbertil@barssforhaiti.com</a> (BARSS) and sakalaayiti@gmail.com (SAKALA). No third-party data sharing. SAKALA International is a 501(c)(3) -- contributions are tax-deductible to the extent permitted by law.
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="barss-mark">{ BARSS }</div>
+  SAKALA Haiti x BARSS LLC &nbsp;·&nbsp; Summer Youth Employment Campaign &nbsp;·&nbsp; Grand Bassin, Milot, Nord, Haiti &nbsp;·&nbsp; 2026<br>
+  Daniel Tillias, Board Chair, SAKALA &nbsp;·&nbsp; Wesley Bertil, BARSS LLC<br>
+  <a href="mailto:wbertil@barssforhaiti.com">wbertil@barssforhaiti.com</a> &nbsp;·&nbsp;
+  <a href="https://www.sakalainternational.org/" target="_blank" rel="noopener">sakalainternational.org</a><br><br>
+  SAKALA International is a registered 501(c)(3). Contributions are tax-deductible to the extent permitted by law.
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+// UPDATE SLOTS_FILLED when a sponsor commits.
+// Change this number and push to GitHub Pages.
+const SLOTS_FILLED = 0;
+const TOTAL_SLOTS = 15;
+// ─────────────────────────────────────────────
+
+const grid = document.getElementById('slots-grid');
+const remainingEl = document.getElementById('remaining-count');
+const headline = document.getElementById('tracker-headline');
+const remaining = TOTAL_SLOTS - SLOTS_FILLED;
+
+if (SLOTS_FILLED >= TOTAL_SLOTS) {
+  headline.innerHTML = '<span style="color:var(--voice-green)">FULLY FUNDED</span>';
+} else {
+  remainingEl.textContent = remaining;
+}
+
+for (let i = 0; i < TOTAL_SLOTS; i++) {
+  const slot = document.createElement('div');
+  slot.className = 'slot ' + (i < SLOTS_FILLED ? 'filled' : 'empty');
+  slot.textContent = i < SLOTS_FILLED ? '✓' : (i + 1);
+  grid.appendChild(slot);
+}
+</script>
+</body>
+</html>
