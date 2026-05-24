@@ -805,49 +805,46 @@ footer a { color: var(--sodium-orange); text-decoration: none; }
 <!-- ═══ SPONSOR FORM ═══ -->
 <div class="form-wrap" id="sponsor">
   <div class="container">
-    <h2>Sponsor a <span class="green">Youth</span></h2>
-    <p class="form-intro">Fill out the form below. You will be redirected to a secure Stripe payment page to complete your $360 sponsorship. BARSS and SAKALA both receive your information directly. At season close you receive a report on your sponsored youth's participation.</p>
+    <h2>Apply to <span class="green">Sponsor</span></h2>
+    <p class="form-intro">Submit your application below. BARSS and SAKALA review every application within 48 hours. Once accepted, you receive a secure sign-in link -- your account is created automatically and you're taken straight to your sponsor dashboard.</p>
 
-    <form action="https://formspree.io/f/REPLACE_FORMSPREE_ID" method="POST">
-      <input type="hidden" name="_subject" value="New SAKALA Summer 2026 Sponsor -- Grand Bassin">
-      <input type="hidden" name="_next" value="REPLACE_STRIPE_PAYMENT_LINK">
-      <input type="hidden" name="_cc" value="sakalaayiti@gmail.com">
-
+    <form id="applyForm">
       <div class="form-row">
         <div class="field">
           <label for="fname">First Name</label>
-          <input type="text" id="fname" name="first_name" required placeholder="Jean">
+          <input type="text" id="fname" required placeholder="Jean">
         </div>
         <div class="field">
           <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="last_name" required placeholder="Pierre">
+          <input type="text" id="lname" required placeholder="Pierre">
         </div>
       </div>
 
       <div class="field">
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required placeholder="you@example.com">
+        <input type="email" id="email" required placeholder="you@example.com">
       </div>
 
       <div class="field">
         <label for="location">Where are you based?</label>
-        <input type="text" id="location" name="location" placeholder="New York · Montreal · Paris · Miami · Boston...">
+        <input type="text" id="location" placeholder="New York · Montreal · Paris · Miami · Boston...">
       </div>
 
       <div class="field">
         <label for="connection">Your connection to Haiti (optional)</label>
-        <input type="text" id="connection" name="connection" placeholder="Family from Nord · Former volunteer · Heard about SAKALA through...">
+        <input type="text" id="connection" placeholder="Family from Nord · Former volunteer · Heard about SAKALA through...">
       </div>
 
       <div class="field">
         <label for="message">Message to the cohort (optional)</label>
-        <textarea id="message" name="message" placeholder="Anything you want the youth at Grand Bassin to know..."></textarea>
+        <textarea id="message" placeholder="Anything you want the youth at Grand Bassin to know..."></textarea>
       </div>
 
-      <button type="submit" class="submit-btn">Commit $360 -- Sponsor a Youth</button>
+      <button type="submit" class="submit-btn" id="applyBtn">Submit Application</button>
+      <div id="applyMsg" style="display:none; margin-top:16px; padding:16px; font-family:'Courier Prime',monospace; font-size:12px; line-height:1.7; border:1px solid var(--voice-green); color:var(--voice-green); background:rgba(26,171,77,0.06);"></div>
       <p class="form-note">
-        After submitting, you will be redirected to a secure Stripe checkout to complete your $360 payment. Your information goes directly to <a href="mailto:wbertil@barssforhaiti.com">wbertil@barssforhaiti.com</a> (BARSS) and sakalaayiti@gmail.com (SAKALA). No third-party data sharing.<br><br>
-        SAKALA International is a registered 501(c)(3). Contributions are tax-deductible to the extent permitted by law. A campaign report will be sent to your email at season close.
+        Applications are reviewed within 48 hours. On acceptance, you receive a secure sign-in link -- no password, no friction. Payment ($360) is completed inside your sponsor dashboard after acceptance.<br><br>
+        SAKALA International is a registered 501(c)(3). Contributions are tax-deductible. Questions: <a href="mailto:wbertil@barssforhaiti.com">wbertil@barssforhaiti.com</a>
       </p>
     </form>
   </div>
@@ -863,31 +860,55 @@ footer a { color: var(--sodium-orange); text-decoration: none; }
   SAKALA International is a registered 501(c)(3). Contributions are tax-deductible to the extent permitted by law.
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
 <script>
-// ─────────────────────────────────────────────────────
-// UPDATE SLOTS_FILLED when a sponsor commits.
-// Change this one number and push to GitHub Pages.
+// ── TRACKER (update SLOTS_FILLED as sponsors confirm) ──
 const SLOTS_FILLED = 0;
 const TOTAL_SLOTS  = 15;
-// ─────────────────────────────────────────────────────
-
 const grid      = document.getElementById('slots-grid');
 const remaining = document.getElementById('remaining-count');
 const headline  = document.getElementById('tracker-headline');
-const left      = TOTAL_SLOTS - SLOTS_FILLED;
-
 if (SLOTS_FILLED >= TOTAL_SLOTS) {
   headline.innerHTML = '<span style="color:var(--voice-green)">FULLY FUNDED</span>';
-} else {
-  remaining.textContent = left;
-}
-
+} else { remaining.textContent = TOTAL_SLOTS - SLOTS_FILLED; }
 for (let i = 0; i < TOTAL_SLOTS; i++) {
   const slot = document.createElement('div');
   slot.className = 'slot ' + (i < SLOTS_FILLED ? 'filled' : 'empty');
   slot.textContent = i < SLOTS_FILLED ? '✓' : (i + 1);
   grid.appendChild(slot);
 }
+
+// ── APPLICATION FORM ──
+document.getElementById('applyForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('applyBtn');
+  const msg = document.getElementById('applyMsg');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+
+  const { error } = await db.from('sponsors').insert({
+    first_name: document.getElementById('fname').value.trim(),
+    last_name:  document.getElementById('lname').value.trim(),
+    email:      document.getElementById('email').value.trim(),
+    location:   document.getElementById('location').value.trim() || null,
+    connection: document.getElementById('connection').value.trim() || null,
+    message:    document.getElementById('message').value.trim() || null,
+  });
+
+  if (error) {
+    btn.disabled = false; btn.textContent = 'Submit Application';
+    msg.style.display = 'block';
+    msg.style.borderColor = '#DC143C'; msg.style.color = '#ff6b81'; msg.style.background = 'rgba(220,20,60,0.06)';
+    msg.textContent = error.code === '23505'
+      ? 'An application with this email already exists. Email wbertil@barssforhaiti.com if you have questions.'
+      : 'Something went wrong. Email wbertil@barssforhaiti.com directly.';
+  } else {
+    btn.textContent = 'Application Submitted';
+    msg.style.display = 'block';
+    msg.textContent = 'Application received. BARSS and SAKALA will review within 48 hours. If accepted, you will receive a sign-in link at ' + document.getElementById('email').value.trim() + ' -- your account will be ready instantly.';
+    e.target.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+  }
+});
 </script>
 </body>
 </html>
